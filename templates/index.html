@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>House Price Predictor</title>
+</head>
+<body class="bg-dark">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="card" style="width: 100%; margin-top: 50px;">
+            <div class="card-header" style="text-align: center;">
+                <h1>Welcome to House Price Predictor</h1>
+            </div>
+            <div class="card-body">
+                <form id="predictForm" method="post" accept-charset="utf-8">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="location"><b>Select the Location:</b></label>
+                            <select class="select-picker form-control" id="location" name="location" required>
+                                {% for location in locations %}
+                                    <option value="{{ location }}">{{ location }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="bhk"><b>Enter BHK:</b></label>
+                            <input type="text" class="form-control" id="bhk" name="bhk" placeholder="Enter BHK" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="bath"><b>Enter Number of Bathrooms:</b></label>
+                            <input type="text" class="form-control" id="bath" name="bath" placeholder="Enter Number of Bathrooms" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="total_sqft"><b>Enter Square Feet:</b></label>
+                            <input type="text" class="form-control" id="total_sqft" name="total_sqft" placeholder="Enter Square Feet" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="text-align: center; margin-top: 20px;">
+                        <button type="submit" class="btn btn-primary form-control">Predict Price</button>
+                    </div>
+                </form>
+                <br>
+                <div class="col-md-12" style="text-align: center;">
+                    <h3><span id="prediction"></span></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('predictForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var fd = new FormData(document.querySelector('form'));
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/predict', true);
+        document.getElementById("prediction").innerHTML = "Wait, Predicting Price ...";
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                document.getElementById('prediction').innerHTML = 'Predicted Price: ₹ ' + xhr.responseText;
+            }
+        };
+        xhr.send(fd);
+    });
+</script>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
