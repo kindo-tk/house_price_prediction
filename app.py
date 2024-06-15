@@ -6,7 +6,6 @@ import numpy as np
 app = Flask(__name__)
 data = pd.read_csv("dataset/cleaned_house_data.csv")
 pipe = pickle.load(open("model/RidgeModel.pkl", 'rb'))
-colmn_trans = pickle.load(open("model/column_transformer.pkl", 'rb'))
 
 @app.route('/')
 def index():
