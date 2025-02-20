@@ -2,10 +2,11 @@ from flask import Flask, render_template, request
 import pandas as pd 
 import pickle
 import numpy as np
+from babel.numbers import format_currency  # Import Babel for Indian currency formatting
 
 app = Flask(__name__)
 data = pd.read_csv("dataset/cleaned_house_data.csv")
-pipe = pickle.load(open("model/RidgeModel.pkl", 'rb'))
+pipe = pickle.load(open("model/BestModel.pkl", 'rb'))
 
 @app.route('/')
 def index():
@@ -28,8 +29,12 @@ def predict():
         
         # Make prediction
         prediction = pipe.predict(input_data)[0] * 1e5
-            
-        return str(np.round(prediction, 2))
+
+        # Format as Indian currency (₹)
+        formatted_prediction = format_currency(prediction, "INR", locale="en_IN")
+
+        return formatted_prediction
+
     except Exception as e:
         return f"An error occurred: {str(e)}", 500
 

@@ -59,7 +59,7 @@
         document.getElementById("prediction").innerHTML = "Wait, Predicting Price ...";
         xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-                document.getElementById('prediction').innerHTML = 'Predicted Price: ₹ ' + xhr.responseText;
+                document.getElementById('prediction').innerHTML = 'Predicted Price:  ' + xhr.responseText;
             }
         };
         xhr.send(fd);
