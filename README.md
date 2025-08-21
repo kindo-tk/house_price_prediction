@@ -1,98 +1,134 @@
 # House Price Prediction
 
-This project implements a house price prediction system using Linear Regression. It is built as an end-to-end machine-learning project using Flask.
+This project implements a house price prediction system using machine learning models. It is an end-to-end machine learning project integrated with Flask for web deployment.
+
+---
 
 ## Overview
 
-The goal of this project is to predict the price of houses based on various features such as location, total square feet area, number of bathrooms, and number of bedrooms.
+The goal of this project is to predict the price of houses in Bangalore based on various features such as:
+
+- **Location**
+- **Total square feet area**
+- **Number of bathrooms**
+- **Number of bedrooms (BHK)**
+
+The project provides a **web-based interface** for users to input house details and get price predictions instantly.
+
+---
 
 ## Features
 
-- **Predicts house prices** based on user input.
-- **Web-based interface** for easy interaction.
-- **Multiple ML models tested** to select the best one.
-- **Uses Ridge Regression** as the final model after evaluation.
-- **End-to-end ML project** integrated with Flask.
+- Predicts house prices based on user input.
+- Web-based interface for easy interaction.
+- Multiple machine learning models tested to select the best one.
+- Uses **Ridge Regression** as the final model after evaluation.
+- End-to-end ML project integrated with Flask.
+
+---
 
 ## Project Structure
 
-The project is structured as follows:
-
-- `app.py`: Flask web application for serving predictions.
-- `model/`: Directory containing trained model and preprocessing objects.
-- `dataset/`: Directory containing the dataset used for training.
-- `templates/`: HTML templates for the web interface.
-
+```
+house_price_prediction/
+│
+├── app.py                  # Flask application
+├── dataset/                # Dataset used for training
+├── model/                  # Saved model and preprocessing objects
+├── templates/              # HTML templates for the web interface
+└── README.md               # Project documentation
+```
 
 ---
 
-## 🏆 Model Selection Process
+##  Model Selection & Results
 
-Several machine learning models were trained and evaluated using **5-Fold Cross-Validation**. The **Ridge Regression model** achieved the best performance.
+Several machine learning models were trained and evaluated using **5-Fold Cross-Validation**.  
 
 | **Model**                     | **Mean Cross-Validation R² Score** |
 |--------------------------------|------------------------------------|
-| **Linear Regression**          | **0.8035** |
-| **Lasso Regression**           | 0.7924 |
-| **Ridge Regression**           | **0.8035** |
-| **Decision Tree Regressor**     | 0.6526 |
-| **Random Forest Regressor**     | 0.7607 |
-| **XGBoost Regressor**          | 0.7144 |
-| **SVR (Support Vector Regressor)** | 0.1645 |
+| Linear Regression              | 0.8413 |
+| Lasso Regression               | 0.8333 |
+| Ridge Regression               | 0.8413 |
+| Decision Tree Regressor        | 0.7397 |
+| Random Forest Regressor        | 0.7869 |
+| XGBoost Regressor              | 0.8328 |
 
-✅ **Best Model Before Tuning:** **Ridge Regression**  
-✅ **Final Selected Model:** **Ridge Regression**  
-✅ **Final Test R² Score:** **0.8177**  
+- **Best Model Before Tuning:** Ridge Regression  
+- **Final Selected Model:** Ridge Regression  
 
-📌 **Why Ridge Regression?**  
-- Performs **better than tree-based models** for this dataset.  
-- **Prevents overfitting** by applying regularization.  
-- Achieved the **highest cross-validation score**.  
+**Performance on Test Set:**  
+
+- **R² Score:** 0.8016  
+- **Mean Absolute Error (MAE):** 19.6350  
+- **Root Mean Squared Error (RMSE):** 39.9124  
+
+**Why Ridge Regression?**  
+
+- Performs comparably to Linear Regression while adding **regularization** to prevent overfitting.  
+- Achieved the **highest cross-validation score** alongside Linear Regression.  
+- Provides **stable and reliable predictions** on the test set.
 
 ---
 
-### Setup
+## Setup Instructions
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/kindo-tk/house_price_prediction.git
-   ```
-2. **Navigate to the project directory:**
+```bash
+git clone https://github.com/kindo-tk/house_price_prediction.git
+```
 
-    ```sh
-    cd .\house_price_prediction\
-    ```
+2. Navigate to the project directory:
 
-3. **Create a virtual environment:**
+```bash
+cd house_price_prediction
+```
 
-    ```sh
-    python -m venv .venv
-    ```
+3. Create a virtual environment:
 
-4. **Activate the virtual environment:**
+```bash
+python -m venv .venv
+```
 
-   ```sh
-   .venv\Scripts\activate
-   ```
+4. Activate the virtual environment:
 
-5. **Install the required packages:**
+```bash
+.venv\Scripts\activate
+```
 
-    ```sh
-    pip install -r requirements.txt
-    ```
+5. Install the required packages:
 
-6. **Run the Flask application:**
+```bash
+pip install -r requirements.txt
+```
 
-    ```sh
-    python app.py
-    ```
+6. Run the Flask application:
+
+```bash
+python app.py
+```
+
+7. Open your browser and go to:
+
+```
+http://localhost:5000
+```
+
+---
+
 ## Usage
 
-1. Access the web application by navigating to http://localhost:5000 in your web browser.
-2. Enter the required details such as location, total square feet area, number of bathrooms, and number of bedrooms.
-3. Click on the "Predict Price" button to get the predicted house price.
+1. Enter the required house details:
 
+   - Location
+   - Total square feet area
+   - Number of bathrooms
+   - Number of bedrooms (BHK)
+
+2. Click **Predict Price** to see the estimated house price.
+
+---
 
 ## Technologies Used
 
@@ -101,18 +137,28 @@ Several machine learning models were trained and evaluated using **5-Fold Cross-
 - HTML/CSS
 - Bootstrap
 - scikit-learn
+- XGBoost
+- Babel (for Indian currency formatting)
 
+---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-## Contact 
+---
+
+## Contact
+
 For any inquiries or feedback, please contact:
 
-- <a href="https://www.linkedin.com/in/tufan-kundu-577945221/">Tufan Kundu (LinkedIn)</a>
-- Email: tufan.kundu11@gmail.com
-<hr>
-<br>
-<img src="https://github.com/kindo-tk/images/blob/main/house1.png">
-<img src = "https://github.com/kindo-tk/images/blob/main/Screenshot%202025-02-20%20235337.png">
+- [Tufan Kundu (LinkedIn)](https://www.linkedin.com/in/tufan-kundu-577945221/)  
+- Email: tufan.kundu11@gmail.com  
+
+---
+
+### Screenshots
+
+<img src="https://github.com/kindo-tk/images/blob/main/house1.png" width="600">
+<img src="https://github.com/kindo-tk/images/blob/main/Screenshot%202025-02-20%20235337.png" width="600">
+
