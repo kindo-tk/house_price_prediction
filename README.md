@@ -36,6 +36,7 @@ house_price_prediction/
 ├── dataset/                # Dataset used for training
 ├── model/                  # Saved model and preprocessing objects
 ├── templates/              # HTML templates for the web interface
+├── Dockerfile              # Docker configuration
 └── README.md               # Project documentation
 ```
 
@@ -116,6 +117,27 @@ http://localhost:5000
 ```
 
 ---
+## 🐳 Docker Usage
+
+If you prefer using Docker, you can pull the pre-built image from Docker Hub and run it instantly:
+
+1. **Pull the Docker Image:**
+
+   ```bash
+   docker pull kindotk/house_price_prediction
+   ```
+
+2. **Run the Container:**
+
+   ```bash
+   docker run -p 5000:5000 kindotk/house_price_prediction
+   ```
+
+3. **Access the Application:**
+
+   Open your browser and navigate to `http://localhost:5000`.
+
+---
 
 ## Usage
 
@@ -161,4 +183,7 @@ For any inquiries or feedback, please contact:
 
 <img src="https://github.com/kindo-tk/images/blob/main/house1.png" width="600">
 <img src="https://github.com/kindo-tk/images/blob/main/Screenshot%202025-02-20%20235337.png" width="600">
+
+
+---
 
