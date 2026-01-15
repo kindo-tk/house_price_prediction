@@ -86,31 +86,34 @@ git clone https://github.com/kindo-tk/house_price_prediction.git
 cd house_price_prediction
 ```
 
-3. Create a virtual environment:
+3. Create and activate a virtual environment:
 
-```bash
-python -m venv .venv
-```
+   **Windows:**
+    ```bash
+    python -m venv .venv
+    .venv\Scripts\activate
+    ```
+    
+    **macOS/Linux:**
+    ```bash
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
 
-4. Activate the virtual environment:
 
-```bash
-.venv\Scripts\activate
-```
-
-5. Install the required packages:
+4. Install the required packages:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-6. Run the Flask application:
+5. Run the Flask application:
 
 ```bash
 python app.py
 ```
 
-7. Open your browser and go to:
+6. Open your browser and go to:
 
 ```
 http://localhost:5000
